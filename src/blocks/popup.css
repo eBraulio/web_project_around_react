@@ -142,11 +142,6 @@
   right: -41px;
 }
 
-/* .popup__close-confirmation {
-  top: 250px;
-  right: 680px;
-} */
-
 .popup__close-button:hover {
   opacity: 60%;
   transition: 0.4s ease-in all;
