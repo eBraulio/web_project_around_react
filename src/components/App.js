@@ -56,14 +56,14 @@ function App() {
         >
           <input
             type="url"
-            class="popup__input popup__form-input popup__form-input_type_link"
+            className="popup__input popup__form-input popup__form-input_type_link"
             id="popup__avatar-image"
             name="avatarLink"
             placeholder="Enlace a la imagen"
             required
           />
           <span
-            class="popup__error popup__form-error-message avatar-link-error"
+            className="popup__error popup__form-error-message avatar-link-error"
             id="popup__avatar-image-error"
           ></span>
         </PopupWithForm>
