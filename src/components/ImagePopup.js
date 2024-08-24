@@ -1,15 +1,21 @@
 // import closeIcon from "../images/vector/close-icon.svg";
 
-export default function ImagePopup() {
+export default function ImagePopup({ link, title, onClose, isOpen }) {
   return (
-    <div className="popup" id="image-popup">
-      <div className="popup__overlay" id="popup-overlay-image"></div>
+    <div
+      className={`popup popup_type_${title} ${isOpen ? "popup__opened" : ""}`}
+      id="image-popup"
+    >
+      <div
+        className={`popup__overlay ${isOpen ? "popup__overlay-opened" : ""}`}
+        id="popup-overlay-image"
+      ></div>
       <div className="popup__content-image">
         <button
           className="popup__close-button popup__close-image"
-          onClick={props.onClose}
+          onClick={onClose}
         ></button>
-        <img className="popup__element-image" src=" " alt=" " />
+        <img className="popup__element-image" src={link} alt=" " />
         <p className="popup__element-title"></p>
       </div>
     </div>

@@ -3,11 +3,14 @@ import { useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 import Main from "./Main";
 import Footer from "./Footer";
+import ImagePopup from "./ImagePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -15,6 +18,10 @@ function App() {
     // const overlayAvatar = document.querySelector("#popup-overlay-avatar");
     // popupAvatar.classList.add("popup__opened");
     // overlayAvatar.classList.add("popup__overlay-opened");
+  }
+  function handleCardClick(card) {
+    setIsImagePopupOpen(true);
+    setSelectedCard(card);
   }
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -35,6 +42,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setIsImagePopupOpen(false);
   }
   return (
     <div className="App">
@@ -44,7 +52,7 @@ function App() {
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleAddPlaceClick}
           onEditAvatarClick={handleEditAvatarClick}
-          onCardClick
+          onCardClick={handleCardClick}
         />
         <Footer />
         <PopupWithForm
@@ -128,6 +136,12 @@ function App() {
           />
           <span className="popup__error" id="popup__add-adress-error"></span>
         </PopupWithForm>
+        <ImagePopup
+          isOpen={isImagePopupOpen}
+          link={selectedCard.link}
+          title={selectedCard.title}
+          onClose={closeAllPopups}
+        />
       </div>
     </div>
   );

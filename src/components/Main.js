@@ -1,28 +1,41 @@
-import profileAvatar from "../images/profile_avatar-foto.png";
-import trashIcon from "../images/vector/Trash-icon.svg";
 import { useState, useEffect } from "react";
 import api from "../utils/api";
-
+import Card from "./Card";
 export default function Main(props) {
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription] = useState("");
   const [userAvatar, setUserAvatar] = useState("");
+  const [cards, setCards] = useState([]);
   useEffect(() => {
-    async function getValues() {
+    async function getUserInfo() {
       const response = await api.getUserInfo();
-      console.log(response);
+      //   console.log(response);
+      setUserName(response.name);
+      setUserDescription(response.about);
+      setUserAvatar(response.avatar);
     }
-    getValues();
+    getUserInfo();
   }, []);
+
+  useEffect(() => {
+    async function getCards() {
+      const response = await api.getInitialCards();
+      //   console.log(response);
+      setCards(response);
+    }
+    getCards();
+  }, []);
+
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__avatar" onClick={props.onEditAvatarClick}>
           <img
             className="profile__avatar-image"
-            id="profile__avatar-image"
+            style={{
+              backgroundImage: `url(${userAvatar})`,
+            }}
             alt="Profile picture"
-            src={profileAvatar}
           />
           <button
             title="editar-foto-perfil"
@@ -32,14 +45,14 @@ export default function Main(props) {
         </div>
         <div className="profile__info">
           <div className="profile__info-container">
-            <p className="profile__name"></p>
+            <p className="profile__name">{userName}</p>
             <button
               className="profile__edit-button"
               type="button"
               onClick={props.onEditProfileClick}
             ></button>
           </div>
-          <p className="profile__description"></p>
+          <p className="profile__description">{userDescription}</p>
         </div>
         <button
           className="profile__add-button"
@@ -47,7 +60,18 @@ export default function Main(props) {
           onClick={props.onAddPlaceClick}
         ></button>
       </section>
-      <section className="elements" id="elements"></section>
+      <section className="elements" id="elements">
+        {cards.map((card) => (
+          <Card
+            onCardClick={props.onCardClick}
+            card={card}
+            key={card._id}
+            name={card.name}
+            likes={card.likes}
+            link={card.link}
+          />
+        ))}
+      </section>
 
       <div className="popup" id="popup-delete-confirmation">
         <div className="popup__overlay" id="popup-overlay-confirmation"></div>
@@ -72,26 +96,6 @@ export default function Main(props) {
           </form>
         </div>
       </div>
-
-      <template id="template__elements">
-        <div className="template__element">
-          <img
-            src={trashIcon}
-            alt="Icono de Eliminar foto"
-            className="element__trash-icon"
-          />
-          <div className="element__image-container">
-            <img src=" " alt=" " className="element__image" />
-          </div>
-          <div className="element__button">
-            <h2 className="element__text"></h2>
-            <div className="element__container">
-              <div className="element__like-button"></div>
-              <span className="element__like-number"></span>
-            </div>
-          </div>
-        </div>
-      </template>
     </main>
   );
 }
