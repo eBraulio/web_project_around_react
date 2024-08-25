@@ -14,10 +14,6 @@ function App() {
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
-    // const popupAvatar = document.querySelector("#popup-avatar-profile");
-    // const overlayAvatar = document.querySelector("#popup-overlay-avatar");
-    // popupAvatar.classList.add("popup__opened");
-    // overlayAvatar.classList.add("popup__overlay-opened");
   }
   function handleCardClick(card) {
     setIsImagePopupOpen(true);
@@ -25,17 +21,9 @@ function App() {
   }
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
-    // const popupEdit = document.querySelector("#popup-profile");
-    // const overlayEdit = document.querySelector("#popup-overlay-edit");
-    // popupEdit.classList.add("popup__opened");
-    // overlayEdit.classList.add("popup__overlay-opened");
   }
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
-    // const popupAdd = document.querySelector("#place-popup");
-    // const overlayAdd = document.querySelector("#popup-overlay-add");
-    // popupAdd.classList.add("popup__opened");
-    // overlayAdd.classList.add("popup__overlay-opened");
   }
 
   function closeAllPopups() {

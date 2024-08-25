@@ -144,12 +144,6 @@ class Api {
   }
 }
 
-// const api = new Api({
-//   address: "https://nomoreparties.co",
-//   groupId: `cohort0`, // CHANGE IT WITH YOUR COHORT
-//   token: `80a75492-21c5-4330-a02f-308029e94b63`, // CHANGE IT WITH YOUR TOKEN
-// });
-
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_11",
   headers: {
