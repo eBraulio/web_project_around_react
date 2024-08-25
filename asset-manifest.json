@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/web_project_around_react/static/css/main.3f4f38ac.css",
+    "main.js": "/web_project_around_react/static/js/main.cf3834aa.js",
+    "static/js/453.8d428687.chunk.js": "/web_project_around_react/static/js/453.8d428687.chunk.js",
+    "static/media/Inter-Black.ttf": "/web_project_around_react/static/media/Inter-Black.83d81b169bedf85385f2.ttf",
+    "static/media/Inter-SemiBold.ttf": "/web_project_around_react/static/media/Inter-SemiBold.6058d3da655fb35169c2.ttf",
+    "static/media/Inter-Regular.ttf": "/web_project_around_react/static/media/Inter-Regular.9ca9ba81e9dcaa12b3a1.ttf",
+    "static/media/header__logo.svg": "/web_project_around_react/static/media/header__logo.4e8e0a1d604782a0dff8e5b1a5441e4d.svg",
+    "static/media/like-icon.svg": "/web_project_around_react/static/media/like-icon.3826c074a1b94b101e38.svg",
+    "index.html": "/web_project_around_react/index.html",
+    "static/media/Trash-icon.svg": "/web_project_around_react/static/media/Trash-icon.c4956c32989e66228de8d03a901d4be3.svg",
+    "static/media/elements__edit-button.svg": "/web_project_around_react/static/media/elements__edit-button.f7653e11b1c3c859569d.svg",
+    "static/media/like-icon-black.svg": "/web_project_around_react/static/media/like-icon-black.226461bd64622361ffb2.svg",
+    "static/media/close-icon.svg": "/web_project_around_react/static/media/close-icon.0a2678e11f71ce96ede3.svg",
+    "static/media/profile__Add-Button.svg": "/web_project_around_react/static/media/profile__Add-Button.6f41966c71dd7895857f.svg",
+    "static/media/profile__Edit-Button.svg": "/web_project_around_react/static/media/profile__Edit-Button.a1892ea72cb87c8fc3aa.svg",
+    "main.3f4f38ac.css.map": "/web_project_around_react/static/css/main.3f4f38ac.css.map",
+    "main.cf3834aa.js.map": "/web_project_around_react/static/js/main.cf3834aa.js.map",
+    "453.8d428687.chunk.js.map": "/web_project_around_react/static/js/453.8d428687.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3f4f38ac.css",
+    "static/js/main.cf3834aa.js"
+  ]
+}
