@@ -1,3 +1,10 @@
+Tripleten web_project_around_react
+\*Página desarrollada para el Sprint 11 "JIntroducción a React.js", del curso de WEB Developer de TRIPLETEN.
+
+\*Esta pàgina WEB fue desarrolada como proyecto final del décimo primero sprint del curso de Web Developer. El còdigo HTML del proyecto del Sprint 10 se transfirió a JSX. Los estilos CSS tambièn se implementaron. Los componentes se movieron a JSX y se conectó la API. Los archivos de la infraestructura del proyecto se crean mediante CRA. Finalmente se desplegó la página en GITHUB.
+
+\*Link en GitHub: https://ebraulio.github.io/web_project_around_react/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
