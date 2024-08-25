@@ -45,7 +45,12 @@ function App() {
     setIsImagePopupOpen(false);
   }
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        backgroundColor: "#000",
+      }}
+    >
       <div className="page">
         <Header />
         <Main

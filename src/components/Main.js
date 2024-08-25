@@ -9,7 +9,7 @@ export default function Main(props) {
   useEffect(() => {
     async function getUserInfo() {
       const response = await api.getUserInfo();
-      //   console.log(response);
+
       setUserName(response.name);
       setUserDescription(response.about);
       setUserAvatar(response.avatar);
@@ -20,7 +20,7 @@ export default function Main(props) {
   useEffect(() => {
     async function getCards() {
       const response = await api.getInitialCards();
-      //   console.log(response);
+
       setCards(response);
     }
     getCards();
@@ -32,9 +32,7 @@ export default function Main(props) {
         <div className="profile__avatar" onClick={props.onEditAvatarClick}>
           <img
             className="profile__avatar-image"
-            style={{
-              backgroundImage: `url(${userAvatar})`,
-            }}
+            src={userAvatar}
             alt="Profile picture"
           />
           <button

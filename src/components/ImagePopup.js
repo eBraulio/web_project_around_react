@@ -1,5 +1,3 @@
-// import closeIcon from "../images/vector/close-icon.svg";
-
 export default function ImagePopup({ link, title, onClose, isOpen }) {
   return (
     <div

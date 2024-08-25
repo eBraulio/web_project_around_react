@@ -14,7 +14,6 @@ export default function Card({ _id, likes, link, name, onCardClick, card }) {
       />
       <div className="element__image-container">
         <img
-          //   style={{ backgroundImage: `url(${card.link})` }}
           src={link}
           alt={name}
           className="element__image"
