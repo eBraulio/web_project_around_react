@@ -55,6 +55,7 @@ function App() {
 
   function handleUpdateAvatar(link) {
     api.editAvatarProfile(link).then((newUser) => {
+      //from api.js
       setCurrentUser(newUser);
     });
   }

@@ -3,7 +3,7 @@ class Api {
     this.baseUrl = options.baseUrl;
     this.headers = options.headers;
   }
-  //////////
+
   _makeRequest(endpoint, method = "GET", body = null) {
     const options = {
       method,
@@ -24,8 +24,6 @@ class Api {
       })
       .catch((error) => console.error("Error:", error));
   }
-
-  /////////
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
@@ -78,25 +76,6 @@ class Api {
         console.log(err);
       });
   }
-
-  //   editAvatarProfile(data) {
-  //     return fetch(`${this.baseUrl}/users/me/avatar`, {
-  //       method: "PATCH",
-  //       headers: this.headers,
-  //       body: JSON.stringify({
-  //         avatar: data.avatarLink,
-  //       }),
-  //     })
-  //       .then((res) => {
-  //         if (res.ok) {
-  //           return res.json();
-  //         }
-  //         return Promise.reject(`Error: ${res.status}`);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
 
   editAvatarProfile({ avatar }) {
     return this._makeRequest(`/users/me/avatar`, "PATCH", { avatar });

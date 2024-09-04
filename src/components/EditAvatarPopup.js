@@ -1,12 +1,14 @@
-import React, { createRef } from "react";
+import React, { useRef } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
-  const inputRef = createRef();
+  const avatar = useRef();
   function handleSubmit(e) {
     e.preventDefault();
 
-    onUpdateAvatar(inputRef.current.value);
+    onUpdateAvatar({
+      avatar: avatar.current.value,
+    });
   }
 
   return (
@@ -24,7 +26,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
         id="popup__avatar-image"
         name="avatarLink"
         placeholder="Enlace a la imagen"
-        ref={inputRef}
+        ref={avatar}
         required
       />
       <span
