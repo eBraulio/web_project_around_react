@@ -1,35 +1,9 @@
-import { useState, useEffect, useContext } from "react";
-import api from "../utils/api";
+import { useContext } from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 
 export default function Main(props) {
-  const [cards, setCards] = useState([]);
   const currentUser = useContext(CurrentUserContext);
-  useEffect(() => {
-    async function getCards() {
-      const response = await api.getInitialCards();
-
-      setCards(response);
-    }
-    getCards();
-  }, []);
-
-  function handleCardLike(card) {
-    // Verifica una vez más si a esta tarjeta ya le han dado like
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
-    // Envía una petición a la API y obtén los datos actualizados de la tarjeta
-    api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
-      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-    });
-  }
-
-  function handleCardDelete(card) {
-    api.deleteCard(card._id).then((newCard) => {
-      setCards((state) => state.filter((c) => c._id !== card._id));
-    });
-  }
 
   return (
     <main className="content">
@@ -65,7 +39,7 @@ export default function Main(props) {
         ></button>
       </section>
       <section className="elements" id="elements">
-        {cards.map((card) => (
+        {props.cards.map((card) => (
           <Card
             onCardClick={props.onCardClick}
             card={card}
@@ -73,8 +47,8 @@ export default function Main(props) {
             name={card.name}
             likes={card.likes}
             link={card.link}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
+            onCardLike={props.onCardLike}
+            onCardDelete={props.onCardDelete}
           />
         ))}
       </section>
