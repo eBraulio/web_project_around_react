@@ -15,6 +15,7 @@ export default function PopupWithForm(props) {
       <div className="popup__container" id="edit-popup__container">
         <h2 className="popup__title">{props.title}</h2>
         <form
+          onSubmit={props.onSubmit}
           className={`popup__edit popup__${props.name}`}
           name={props.name}
           noValidate

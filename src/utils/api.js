@@ -3,6 +3,29 @@ class Api {
     this.baseUrl = options.baseUrl;
     this.headers = options.headers;
   }
+  //////////
+  _makeRequest(endpoint, method = "GET", body = null) {
+    const options = {
+      method,
+      headers: { ...this.headers },
+    };
+
+    if (body) {
+      options.headers["Content-Type"] = "application/json";
+      options.body = JSON.stringify(body);
+    }
+
+    return fetch(`${this.baseUrl}${endpoint}`, options)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  /////////
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
@@ -56,23 +79,27 @@ class Api {
       });
   }
 
-  editAvatarProfile(data) {
-    return fetch(`${this.baseUrl}/users/me/avatar`, {
-      method: "PATCH",
-      headers: this.headers,
-      body: JSON.stringify({
-        avatar: data.avatarLink,
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  //   editAvatarProfile(data) {
+  //     return fetch(`${this.baseUrl}/users/me/avatar`, {
+  //       method: "PATCH",
+  //       headers: this.headers,
+  //       body: JSON.stringify({
+  //         avatar: data.avatarLink,
+  //       }),
+  //     })
+  //       .then((res) => {
+  //         if (res.ok) {
+  //           return res.json();
+  //         }
+  //         return Promise.reject(`Error: ${res.status}`);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+
+  editAvatarProfile({ avatar }) {
+    return this._makeRequest(`/users/me/avatar`, "PATCH", { avatar });
   }
 
   addCard(data) {
@@ -125,6 +152,14 @@ class Api {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.removeLike(cardId);
+    } else {
+      return this.addLike(cardId);
+    }
   }
 
   removeLike(cardId) {

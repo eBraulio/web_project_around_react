@@ -1,22 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import api from "../utils/api";
 import Card from "./Card";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+
 export default function Main(props) {
-  const [userName, setUserName] = useState("");
-  const [userDescription, setUserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
   const [cards, setCards] = useState([]);
-  useEffect(() => {
-    async function getUserInfo() {
-      const response = await api.getUserInfo();
-
-      setUserName(response.name);
-      setUserDescription(response.about);
-      setUserAvatar(response.avatar);
-    }
-    getUserInfo();
-  }, []);
-
+  const currentUser = useContext(CurrentUserContext);
   useEffect(() => {
     async function getCards() {
       const response = await api.getInitialCards();
@@ -26,13 +15,29 @@ export default function Main(props) {
     getCards();
   }, []);
 
+  function handleCardLike(card) {
+    // Verifica una vez más si a esta tarjeta ya le han dado like
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+
+    // Envía una petición a la API y obtén los datos actualizados de la tarjeta
+    api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
+      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+    });
+  }
+
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then((newCard) => {
+      setCards((state) => state.filter((c) => c._id !== card._id));
+    });
+  }
+
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__avatar" onClick={props.onEditAvatarClick}>
           <img
             className="profile__avatar-image"
-            src={userAvatar}
+            src={currentUser.avatar}
             alt="Profile picture"
           />
           <button
@@ -43,14 +48,15 @@ export default function Main(props) {
         </div>
         <div className="profile__info">
           <div className="profile__info-container">
-            <p className="profile__name">{userName}</p>
+            <p className="profile__name">{currentUser.name}</p>
             <button
               className="profile__edit-button"
               type="button"
               onClick={props.onEditProfileClick}
             ></button>
           </div>
-          <p className="profile__description">{userDescription}</p>
+
+          <p className="profile__description">{currentUser.about}</p>
         </div>
         <button
           className="profile__add-button"
@@ -67,6 +73,8 @@ export default function Main(props) {
             name={card.name}
             likes={card.likes}
             link={card.link}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
         ))}
       </section>

@@ -1,16 +1,48 @@
+import { useContext } from "react";
 import React from "react";
 import trashIcon from "../images/vector/Trash-icon.svg";
+import { CurrentUserContext } from "../context/CurrentUserContext";
 
-export default function Card({ _id, likes, link, name, onCardClick, card }) {
+export default function Card({
+  _id,
+  likes,
+  link,
+  name,
+  onCardClick,
+  card,
+  onCardLike,
+  onCardDelete,
+}) {
+  const currentUser = useContext(CurrentUserContext);
   function handleClick() {
     onCardClick(card);
   }
+  // Verificando si el usuario actual es el propietario de la tarjeta actual
+  const isOwn = card.owner._id === currentUser._id;
+  // Creando una variable que después establecerás en `className` para el botón eliminar
+  const cardDeleteButtonClassName = ` ${
+    isOwn ? "element__trash-icon" : "element__trash-icon-hidden"
+  }`;
+  const isLiked = card.likes.some((i) => i._id === currentUser._id);
+  const cardLikeButtonClassName = ` ${
+    isLiked ? "element__like-button-active" : "element__like-button"
+  }`;
+
+  function handleLike() {
+    onCardLike(card);
+  }
+
+  function handleDelete() {
+    onCardDelete(card);
+  }
+
   return (
     <div className="template__element" key={_id}>
       <img
         src={trashIcon}
         alt="Icono de Eliminar foto"
-        className="element__trash-icon"
+        className={cardDeleteButtonClassName}
+        onClick={handleDelete}
       />
       <div className="element__image-container">
         <img
@@ -23,7 +55,7 @@ export default function Card({ _id, likes, link, name, onCardClick, card }) {
       <div className="element__button">
         <h2 className="element__text">{name}</h2>
         <div className="element__container">
-          <div className="element__like-button"></div>
+          <div className={cardLikeButtonClassName} onClick={handleLike}></div>
           <span className="element__like-number">{likes.length}</span>
         </div>
       </div>

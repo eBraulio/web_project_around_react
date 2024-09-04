@@ -26,6 +26,12 @@
   margin-right: 15px;
 }
 
+.element__trash-icon-hidden {
+  display: hidden;
+  position: absolute;
+  z-index: -100;
+}
+
 .element__trash-icon:hover {
   opacity: 60%;
   transition: 0.4s ease-in all;
