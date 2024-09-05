@@ -26,7 +26,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
         id="popup__avatar-image"
         name="avatarLink"
         placeholder="Enlace a la imagen"
-        ref={avatar}
+        ref={avatar || ""}
         required
       />
       <span

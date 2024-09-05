@@ -25,7 +25,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       <input
         className="popup__input popup__add-name"
         type="text"
-        ref={titleRef}
+        ref={titleRef || ""}
         name="name"
         id="popup__add-name"
         placeholder="Título"
@@ -38,7 +38,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         className="popup__input popup__add-adress"
         type="url"
         name="link"
-        ref={imageLinkRef}
+        ref={imageLinkRef || ""}
         id="popup__add-adress"
         placeholder="Enlace a la imagen"
         required

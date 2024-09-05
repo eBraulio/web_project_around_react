@@ -13,7 +13,7 @@ export default function ImagePopup({ link, title, onClose, isOpen }) {
           className="popup__close-button popup__close-image"
           onClick={onClose}
         ></button>
-        <img className="popup__element-image" src={link} alt=" " />
+        <img className="popup__element-image" src={link || ""} alt=" " />
         <p className="popup__element-title"></p>
       </div>
     </div>

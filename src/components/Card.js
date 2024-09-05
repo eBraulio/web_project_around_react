@@ -17,9 +17,7 @@ export default function Card({
   function handleClick() {
     onCardClick(card);
   }
-  // Verificando si el usuario actual es el propietario de la tarjeta actual
   const isOwn = card.owner._id === currentUser._id;
-  // Creando una variable que después establecerás en `className` para el botón eliminar
   const cardDeleteButtonClassName = ` ${
     isOwn ? "element__trash-icon" : "element__trash-icon-hidden"
   }`;
@@ -46,8 +44,8 @@ export default function Card({
       />
       <div className="element__image-container">
         <img
-          src={link}
-          alt={name}
+          src={link || ""}
+          alt={name || ""}
           className="element__image"
           onClick={handleClick}
         />

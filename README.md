@@ -1,7 +1,15 @@
 Tripleten web_project_around_react
-\*Página desarrollada para el Sprint 11 "JIntroducción a React.js", del curso de WEB Developer de TRIPLETEN.
+\*Página desarrollada para el Sprint 12: "React Routing y State Management", del curso de WEB Developer de TRIPLETEN.
 
-\*Esta pàgina WEB fue desarrolada como proyecto final del décimo primero sprint del curso de Web Developer. El còdigo HTML del proyecto del Sprint 10 se transfirió a JSX. Los estilos CSS tambièn se implementaron. Los componentes se movieron a JSX y se conectó la API. Los archivos de la infraestructura del proyecto se crean mediante CRA. Finalmente se desplegó la página en GITHUB.
+\*Esta pàgina WEB fue desarrolada como proyecto final del décimo segundo sprint del curso de Web Developer. El código HTML del proyecto del Sprint 10 se transfirió a JSX. Los estilos CSS también se implementaron. Los componentes se movieron a JSX y se conectó la API. Los archivos de la infraestructura del proyecto se crean mediante CRA. Finalmente se desplegó la página en GITHUB.
+
+04/Sep/2024 - Se agregan funcionalidades del Sprint 12:
+
+-Context del usuario actual
+-"Likes" y eliminación de tarjeta
+-Edición de perfiles
+-Edición del avatar
+-Añadir una nueva tarjeta
 
 \*Link en GitHub: https://ebraulio.github.io/web_project_around_react/
 

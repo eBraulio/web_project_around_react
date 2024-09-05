@@ -21,10 +21,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   }
 
   function handleSubmit(e) {
-    // Evita que el navegador navegue hacia la dirección del formulario
     e.preventDefault();
-
-    // Pasa los valores de los componentes gestionados al controlador externo
     onUpdateUser({
       name,
       about: description,
@@ -44,7 +41,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         className="popup__input popup__input-name"
         placeholder="Nombre"
         onChange={handleChangeName}
-        value={name}
+        value={name || ""}
         name="name"
         type="text"
         id="popup__input-name"
@@ -57,7 +54,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         className="popup__input popup__input-description"
         placeholder="Descripción"
         onChange={handleChangeDescription}
-        value={description}
+        value={description || ""}
         name="about"
         type="text"
         id="popup__input-description"
