@@ -19,20 +19,20 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    async function getCards() {
-      const response = await api.getInitialCards();
-
-      setCards(response);
-    }
-
-    async function getUserInfo() {
-      const response = await api.getUserInfo();
-      setCurrentUser(response);
-    }
-
     getUserInfo();
     getCards();
   }, []);
+
+  async function getCards() {
+    const response = await api.getInitialCards();
+
+    setCards(response);
+  }
+
+  async function getUserInfo() {
+    const response = await api.getUserInfo();
+    setCurrentUser(response);
+  }
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
