@@ -24,15 +24,14 @@ function App() {
 
       setCards(response);
     }
-    getCards();
-  }, []);
 
-  useEffect(() => {
     async function getUserInfo() {
       const response = await api.getUserInfo();
       setCurrentUser(response);
     }
+
     getUserInfo();
+    getCards();
   }, []);
 
   function handleEditAvatarClick() {
