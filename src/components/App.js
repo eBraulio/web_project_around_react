@@ -59,12 +59,14 @@ function App() {
   function handleUpdateUser(userData) {
     api.editProfile(userData).then((newUser) => {
       setCurrentUser(newUser);
+      closeAllPopups();
     });
   }
 
   function handleUpdateAvatar(link) {
     api.editAvatarProfile(link).then((newUser) => {
       setCurrentUser(newUser);
+      closeAllPopups();
     });
   }
 
@@ -126,7 +128,7 @@ function App() {
           <ImagePopup
             isOpen={isImagePopupOpen}
             link={selectedCard.link}
-            title={selectedCard.title}
+            name={selectedCard.name}
             onClose={closeAllPopups}
           />
         </CurrentUserContext.Provider>

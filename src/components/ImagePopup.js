@@ -1,9 +1,6 @@
-export default function ImagePopup({ link, title, onClose, isOpen }) {
+export default function ImagePopup({ link, name, onClose, isOpen }) {
   return (
-    <div
-      className={`popup popup_type_${title} ${isOpen ? "popup__opened" : ""}`}
-      id="image-popup"
-    >
+    <div className={`popup  ${isOpen ? "popup__opened" : ""}`} id="image-popup">
       <div
         className={`popup__overlay ${isOpen ? "popup__overlay-opened" : ""}`}
         id="popup-overlay-image"
@@ -14,7 +11,7 @@ export default function ImagePopup({ link, title, onClose, isOpen }) {
           onClick={onClose}
         ></button>
         <img className="popup__element-image" src={link || ""} alt=" " />
-        <p className="popup__element-title"></p>
+        <p className="popup__element-title">{name || "."}</p>
       </div>
     </div>
   );
